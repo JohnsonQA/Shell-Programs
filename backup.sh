@@ -46,7 +46,9 @@ then
     TIMESTAMP=$(date +"%F-%H-%M-%S")    #In format YYYY-MM-DD HH-MM:SS
     ZIP_FILE=$DEST_DIR/app-logs-$TIMESTAMP.zip  #Creating zip extension file path in Dest DIR
 
-    echo $FILES | zip -@ $ZIP_FILE     #It will zip  and store in dest dir in .zip ext
+    find $SRC_DIR -name "*.log" -mtime +$DAYS | zip -@ $ZIP_FILE     #It will zip  and store in dest dir in .zip ext
+
+    #usllay if u directly call varibale $FILES it's not zipping the files propery. so given cmd
 
     if [ -f $ZIP_FILE ]   #Condition to check succesfully zipped or not. -f to check files
     then
