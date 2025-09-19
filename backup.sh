@@ -45,8 +45,8 @@ then
     echo "Files are present in $SRC_DIR. Proceed to zipping...."
     TIMESTAMP=$(date +"%F-%H-%M-%S")    #In format YYYY-MM-DD HH-MM:SS
     ZIP_FILE=$DEST_DIR/app-logs-$TIMESTAMP.zip  #Creating zip extension file path in Dest DIR
-
-    find $SRC_DIR -name "*.log" -mtime +$DAYS | zip -@ $ZIP_FILE     #It will zip  and store in dest dir in .zip ext
+    echo $FILES | tr ' ' '\n' | zip -@ $ZIP_FILE  # tr means trim the special chars and new lines 
+    #find $SRC_DIR -name "*.log" -mtime +$DAYS | zip -@ $ZIP_FILE     #It will zip  and store in dest dir in .zip ext
 
     #usllay if u directly call varibale $FILES it's not zipping the files propery. so given cmd
 
